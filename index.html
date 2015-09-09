@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="templateApp" >
+<html data-ng-app="templateApp" >
 <head>
     <title>Template App</title>
     <link href="css/ng-grid.css" rel="stylesheet" type="text/css" /> 
@@ -36,29 +36,13 @@
         </div>
     </div>
     <hr/>
-    <div class="container" ng-view=""></div>
+    <div class="container" data-ng-view=""></div>
    <div class="footer" data-ng-controller="BaseController">
         <div class="container">
             <p class="muted credit">Copyright @{{ yeardate }} <a href="http://www.bidvestfm.co.za" title="BidvestFM">BidvestFM</a></p>
         </div> 
     </div>
-         <script type="text/javascript">
-           var tapp = {
-    initialize: function() {
-        this.bindEvents();
-    },
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, true);
-    },
-    onDeviceReady: function() {
-        angular.element(document).ready(function() {
-            angular.bootstrap(document);
-            alert('loaded') ;
-        });
-    }
-};
-        tapp.initialize();
-    </script>
+ 
     <script src="scripts//jquery.min.js"></script>
     <script src="scripts/angular.js"></script>
     <script src="scripts/angular-route.js"></script>
@@ -77,7 +61,23 @@
     <script src="app/services/authsFactory.js"></script>
     <script src="app/services/dataFactory.js"></script>
     <script src="app/services/values.js"></script>
- 
+         <script type="text/javascript">
+           var tapp = {
+    initialize: function() {
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, true);
+    },
+    onDeviceReady: function() {
+        angular.element(document).ready(function() {
+            angular.bootstrap(document);
+            alert('loaded') ;
+        });
+    }
+};
+        tapp.initialize();
+    </script>
 </body>
 </html>
 
