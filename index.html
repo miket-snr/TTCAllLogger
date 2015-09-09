@@ -42,7 +42,7 @@
             <p class="muted credit">Copyright @{{ yeardate }} <a href="http://www.bidvestfm.co.za" title="BidvestFM">BidvestFM</a></p>
         </div> 
     </div>
- 
+    <script src='phonegap.js'></script>
     <script src="scripts//jquery.min.js"></script>
     <script src="scripts/angular.js"></script>
     <script src="scripts/angular-route.js"></script>
@@ -70,10 +70,10 @@
         document.addEventListener('deviceready', this.onDeviceReady, true);
     },
     onDeviceReady: function() {
-        angular.element(document).ready(function() {
+  //      angular.element(document).ready(function() {
             angular.bootstrap(document);
             alert('loaded') ;
-        });
+    //    });
     }
 };
         tapp.initialize();
