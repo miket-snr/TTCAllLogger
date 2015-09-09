@@ -5,7 +5,7 @@
         'ngStorage',
         'ngRoute',
         'angular-loading-bar',
-        'ngGrid'
+       
     ])
         .constant('urls', {
             BASE: 'https://apps.bidvestfm.co.za/FM2GO/Telkom',
@@ -39,5 +39,5 @@
             })
             .otherwise( { redirectTo: '/' } );
     });
-     alert('App loaded now!') ;
+     
 }());
