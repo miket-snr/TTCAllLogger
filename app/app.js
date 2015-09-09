@@ -10,7 +10,8 @@
         .constant('urls', {
             BASE: 'https://apps.bidvestfm.co.za/FM2GO/Telkom',
             BASE_API: 'https://apps.bidvestfm.co.za/FM2GO/Telkom'
-        }).config(function($routeProvider) {
+        })
+        .config(function($routeProvider) {
         $routeProvider
             .when('/', {
                 controller: 'BaseController',
