@@ -39,5 +39,5 @@
             })
             .otherwise( { redirectTo: '/' } );
     });
-    
+     alert('App loaded now!') ;
 }());
