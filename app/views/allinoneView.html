@@ -1,0 +1,212 @@
+<script type="text/ng-template" id="myModalService.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Identify the Service!</h4>
+        <h4>{{screenModel.servicecode + ' -' + screenModel.department}} </h4>
+        <input type="text" ng-model="searchBox" placeholder="Search by Service" />
+    </div>
+    <div class="modal-body">
+        <div class="pre-scrollable">
+            <a class="list-group-item" ng-repeat="node in items | filter:searchBox">
+                <p class="list-group-item-text"><button type="button" class="btn btn-xs btn-info" ng-click="lineselect(node)"> 0 </button>  {{node.searchfield}}</p>
+            </a>
+        </div>
+    </div>
+  <!--   <treecontrol class="tree-light"
+   tree-model="data"
+   options="treeOptions"
+   on-selection="showSelected(node)"
+   selected-node="node1"
+   filter-expression="sitefilter">
+   {{node.title}} 
+</treecontrol>   -->
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="serviceok()">OK</button>
+        <button class="btn btn-warning" ng-click="servicecancel()">Cancel</button>
+    </div>
+</script>
+<script type="text/ng-template" id="myModalTreeService.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Identify the Service!</h4>
+        <h4>{{screenModel.servicecode + ' -' + screenModel.longkey }} </h4>
+        <input type="text" ng-model="searchBox" placeholder="Search by Service" />
+    </div>
+ <div class="modal-body">
+  <treecontrol class="tree-light"
+   tree-model="data"
+   options="treeOptions"
+   on-selection="treeselect(node)"
+   selected-node="node1"
+   filter-expression="searchBox">
+   {{node.title}} 
+</treecontrol>   
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="serviceok()">OK</button>
+        <button class="btn btn-warning" ng-click="servicecancel()">Cancel</button>
+    </div>
+</script>
+<script type="text/ng-template" id="myModalBPContent.html">
+        <div class="modal-header">
+            <h4 class="modal-title">Identify the Business Partner!</h4>
+            <h4>{{BPscreenfields }}</h4>
+            <input type="text" ng-model="searchBPfilter" placeholder="Filter by typing part of Name and Click" />
+            <button type="button" class="btn btn-success btn-md" ng-click="BPSearch(searchBPfilter)">Search &laquo;</button>
+        </div>
+         <div class="modal-body">
+        <div class="pre-scrollable">
+            <a class="list-group-item" ng-repeat="bp in BPList | filter:searchBPfilter">
+                <p class="list-group-item-text"><button type="button" class="btn btn-xs btn-info" ng-click="lineselect(bp)"> 0 </button>  {{bp.PARTNERNO + '-' + bp.NAME_FIRST + ' ' + bp.NAME_LAST}}</p>
+            </a>
+        </div>
+    </div>     
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+<script type="text/ng-template" id="myModalCreateCall.html">
+        <div class="modal-header">
+            <h4 class="modal-title">Check the Data Please!</h4>
+        </div>
+         <div class="modal-body">
+  <div class="pre-scrollable">
+            <ul class="list-group"  >
+ <li class="list-group-item" ><b>Call Type: :</b>{{screenModel.calltype}}</li>
+ <li class="list-group-item" ><b>Division: :</b>{{screenModel.division}}</li>
+ <li class="list-group-item" ><b>Partner: :</b>{{screenModel.partner}}</li>
+ <li class="list-group-item" ><b>Altpartner: :</b>{{screenModel.altpartner}}</li>
+ <li class="list-group-item" ><b>Site: :</b>{{ screenModel.sitename}}</li>
+ <li class="list-group-item" ><b>Building: :</b>{{screenModel.building.XWETEXT}}</li>
+ <li class="list-group-item" ><b>Bupriority: :</b>{{screenModel.bupriority}}</li>
+ <li class="list-group-item" ><b>Floor: :</b>{{screenModel.floor.XWETEXT}}</li>
+ <li class="list-group-item" ><b>Room: :</b>{{screenModel.room}}</li>
+ <li class="list-group-item" ><b>Service: :</b>{{screenModel.servicecode + '-' + screenModel.longkey}}</li>
+ <li class="list-group-item" ><b>Priority: :</b>{{screenModel.priority}}</li>
+ <li class="list-group-item" ><b>Effect: :</b>{{screenModel.effect}}</li>
+ <li class="list-group-item" ><b>Department: :</b>{{screenModel.department}}</li>
+ <li class="list-group-item" ><b>Question: :</b>{{screenModel.question}}</li>
+ <li class="list-group-item" ><b>Shorttext: :</b>{{screenModel.shorttext}}</li>
+ <li class="list-group-item" ><b>Longtext: :</b>{{screenModel.longtext}}</li>
+ <li class="list-group-item" ><b>Feedback: :</b>{{screenModel.feedback}}</li>
+ <li class="list-group-item" ><b>Notification: :</b>{{screenModel.notification}}</li>
+</ul>
+</div>
+    </div>     
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+<!--                                       -->
+ <div class="panel panel-default" ng-hide="1==1">
+   <div class="panel-heading2">
+       Call So Far: </div>
+ <div class="panel-body">   <b>Location:</b>    {{ screenModel.sitecode }} <br/>
+      <b>Service:</b>   {{screenModel.servicecode + ' -' + screenModel.department}}
+</div>
+</div>
+ <div class="panel panel-default">
+   <div class="panel-heading2">
+       Who is an Alternate Contact Person?  </div> <div class="panel-body"> 
+           <a ng-click="openBPSearch('Lg')" ng-class="screenModel.bpstatus ? 'btn btn-success' : 'btn btn-warning'"> Search...</a> {{ screenModel.altpartner }} 
+     </div> </div>
+  
+  <div class="panel panel-default">
+   <div class="panel-heading2">
+       Choose a Location: </div> <div class="panel-body"> 
+          <a ng-click="openSite('Lg')" ng-class="screenModel.locationStatus ? 'btn btn-success' : 'btn btn-warning'"> Search...</a> 
+      {{ screenModel.sitename + ' - ' + screenModel.building.XWETEXT + '-' + screenModel.floor.XWETEXT + '-' + screenModel.room  }} 
+          <button ng-show="screenModel.locationStatus" type="button" class="btn btn-xs btn-info" ng-click="screenModel.locationStatus=false; screenModel.sitecode = '';  searchBox = '' ;"> Clear Selection</button>
+  </div>
+</div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h4 class="modal-title">Identify the Location!</h4>
+            <p>{{screenfields }} 
+                {{screenModel.building.SWENR + '-' + screenModel.building.XWETEXT  + '-' + screenModel.floor.XWETEXT + '-' + screenModel.room }} </p>
+            <input type="text" ng-model="sitenumfilter" placeholder="Search by Site Code eg *19*" /> OR 
+            <input type="text" ng-model="sitenamefilter" placeholder="Search by Name e.g. *ampus* " />
+            <button type="button" class="btn btn-warning btn-md" ng-click="doSiteSearch(sitenumfilter,sitenamefilter)">Search &laquo;</button>
+        </div>
+         <div class="modal-body">
+        <div class="pre-scrollable">
+             <ul>
+                <li class="list-group-item" ng-repeat="site in siteList ">
+                    <a ng-click="lineSelect(site)" class="list-group-item-text"> {{site.SWENR + '-' + site.XWETEXT}}</a>
+                </li>
+            </ul>
+
+        </div>
+             
+              <div>
+  <h4>Choose a Building:</h4>
+ <select ng-model="screenModel.building" data-ng-options="building.XWETEXT for building in buildingList  track by building.SWENR" ></select> 
+                  {{screenModel.building.SWENR + '-' + screenModel.building.XWETEXT }}
+  </div>
+      <div>
+  <h4>Choose a Floor:</h4>
+  <select data-ng-model="screenModel.floor"
+                data-ng-options="floor.XWETEXT for floor in floorList track by floor.SWENR">                
+  </select>  
+           {{screenModel.floor.SWENR + '-' + screenModel.floor.XWETEXT }}
+  </div>
+      <div>
+  <h4>Room Code:</h4>
+ <input type="text" ng-model="screenModel.room" placeholder="Room FreeText" />
+  </div>
+             
+    </div>           
+        
+ <!--   <div ui-tree id="tree-root">
+      <ol ui-tree-nodes ng-model="data">
+        <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+      </ol>
+    </div>  -->
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    
+   <div class="panel panel-default">
+   <div class="panel-heading2">
+      Choose a Service: </div>
+       <div class="panel-body"> 
+              <a ng-click="openService()" ng-class="screenModel.serviceStatus ? 'btn btn-success' : 'btn btn-warning'">Search by List</a> 
+              <a ng-click="openTreeService()" ng-class="screenModel.serviceStatus ? 'btn btn-success' : 'btn btn-warning'">Search by Tree</a> 
+              {{screenModel.servicecode + ' -' + screenModel.longkey}}
+              <button ng-show="screenModel.serviceStatus" type="button" class="btn btn-xs btn-info" ng-click="screenModel.serviceStatus = false; screenModel.servicecode = ''; screenModel.department = '' ; searchBox = '' ;"> Clear Selection</button> 
+       </div> </div>
+  <div class="panel panel-default">
+   <div class="panel-heading2">
+       Give a Description: </div>
+      <div class="panel-body"> 
+<div class="control-group">
+ 
+  <div class="controls">  
+    <label class="control-label" >Short Text</label>
+    <input type="text" id="shorttext" placeholder="* Short Description REQUIRED" required ng-model="screenModel.shorttext"  ng-blur="checkvalid()">
+  </div>
+   
+    <div class="controls">
+         <label class="control-label" >Long Text</label>
+        <textarea id="longtext" rows="6" cols="50" placeholder="* Long Description REQUIRED" required ng-model="screenModel.longtext" ng-blur="checkvalid()"></textarea>
+  </div>
+</div>
+      </div>
+</div>
+<div>
+<ul class="list-group"  ng-show="screenModel.callStatus">
+ <li class="list-group-item" ><b>Still Required:</b></li>     
+  <li class="list-group-item" ng-hide="screenModel.bpstatus">Select an Alternate Partner</li>
+  <li class="list-group-item" ng-hide="screenModel.locationStatus">Identify the Location</li>
+  <li class="list-group-item" ng-hide="screenModel.serviceStatus">Select a Service</li>
+   <li class="list-group-item" ng-hide="screenModel.shorttext.length > 4 ">Enter Short Reference</li> 
+    <li class="list-group-item" ng-hide="screenModel.longtext.length > 4 ">Capture a Description</li>
+</ul>
+</div>
+<hr/>
+ <p><button type="button" class="btn btn-success btn-md" href="#/">Cancel &laquo;</button>
+ <button type="button"class="btn btn-warning btn-md" ng-disabled = screenModel.callStatus ng-click="createcall()" >Create Call &raquo;</button></p>
+ 
