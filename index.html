@@ -43,7 +43,25 @@
         </div> 
     </div>
     <script src='phonegap.js'></script>
+    
     <script src="scripts//jquery.min.js"></script>
+             <script type="text/javascript">
+           var tapp = {
+    initialize: function() {
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, true);
+    },
+    onDeviceReady: function() {
+       angular.element(document).ready(function() {
+            angular.bootstrap(document);
+            alert('loaded') ;
+    });
+    }
+};
+        tapp.initialize();
+    </script>
     <script src="scripts/angular.js"></script>
     <script src="scripts/angular-route.js"></script>
     <script src="scripts/ui-bootstrap-tpls-0.13.0.min.js" ></script>
@@ -61,23 +79,7 @@
     <script src="app/services/authsFactory.js"></script>
     <script src="app/services/dataFactory.js"></script>
     <script src="app/services/values.js"></script>
-         <script type="text/javascript">
-           var tapp = {
-    initialize: function() {
-        this.bindEvents();
-    },
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, true);
-    },
-    onDeviceReady: function() {
-  //      angular.element(document).ready(function() {
-            angular.bootstrap(document);
-            alert('loaded') ;
-    //    });
-    }
-};
-        tapp.initialize();
-    </script>
+
 </body>
 </html>
 
