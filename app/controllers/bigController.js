@@ -1,6 +1,6 @@
 ( function() {
 
-    var locationcontroller = function($scope, $filter ,$modal,dataFactory,$log ) {
+    var locationcontroller = function($scope,$window, $filter ,$modal,dataFactory,$log , AuthsFactory ) {
     
     $scope.handle = '';
     $scope.myTitle = 'What Division is involved?' ;
@@ -65,9 +65,9 @@
      $scope.screenModel.effect = result[0].Effect ;
      $scope.screenModel.routing  = result[0].Routing ;
      $scope.screenModel.department = result[0].Department ;
-      
+     var temp2 =  $scope.screenModel.altpartner.split('-') ; 
     $scope.calllog = {
-            gAltPartner: $scope.screenModel.altpartner ,
+            gAltPartner: temp2[0] ,
             gDept: $scope.screenModel.department ,
             gEffect: $scope.screenModel.effect ,
             gFloor: $scope.screenModel.floor.SWENR ,
@@ -75,14 +75,24 @@
             gRoom: $scope.screenModel.room ,
             gRouting: $scope.screenModel.routing ,
             gSource: 'Internet',
-            gTkombuildclass: $scope.screenModel.tkombuildclass ,
+            gTkombuildclass:$scope.screenModel.bupriority ,
             gTplnr: '6000-' + $scope.screenModel.sitecode + '-' + $scope.screenModel.building.SWENR ,
             gTxt: $scope.screenModel.shorttext ,
-            gZpriority: $scope.screenModel.bupriority ,
+            gZpriority:  $scope.screenModel.tkombuildclass || '5' ,
             longText: $scope.screenModel.longtext ,
             gQmnumr: $scope.screenModel.notification
     } ;
-          
+   var callsuccess = function(res) {
+      var temp = res ; 
+       var outstr = 'Notification Created:' + temp.gQmnumr ;
+       alert(outstr) ;
+        $window.location.href = '#/';
+   } ;
+   AuthsFactory.postNotif(callsuccess, function (res) {
+            $rootScope.error = res.error || 'Failed to get data';
+                    } , $scope.calllog) ;
+      
+    return ;  
     var modalCCInstance = $modal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalCreateCall.html',

@@ -19,6 +19,16 @@
                           }).success(success).error(error)  
          
          };
+          apifactory.postNotif = function(success,error,call) {
+ 
+         return   $http({method: 'POST', url: 'https://apps.bidvestfm.co.za/FM2GO/Telkom/api/T1Notification',
+                        headers: {'Authorization': "Bearer "+$localStorage.token  },
+                         data: call
+                        
+                          }).success(success).error(error)  
+         
+         };       
+    
       apifactory.signin = function (data2go, success, error) {
                   $http({
                         method: 'POST',
