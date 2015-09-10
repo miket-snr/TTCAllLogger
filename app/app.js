@@ -6,9 +6,7 @@
         'ngRoute',
         'angular-loading-bar'
        
-    ]) .config(function ($compileProvider){
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
-    })
+    ]) 
         .constant('urls', {
             BASE: 'https://apps.bidvestfm.co.za/FM2GO/Telkom',
             BASE_API: 'https://apps.bidvestfm.co.za/FM2GO/Telkom'
