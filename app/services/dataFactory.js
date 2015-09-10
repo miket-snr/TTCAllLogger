@@ -97,7 +97,41 @@
             return {};
         };
      factory.BPList = {} ;
-       
+      factory.resetScreen = function() {
+       factory.screenModel = {
+                calltype: 'T1',
+                callStatus: true,
+                division: 'Please Select ',
+                adminStatus: false ,
+                partner: '66011',
+                altpartner: '66011',
+                bpstatus: false,
+                locationStatus: false,
+                sitecode: '0',
+                sitename:'',
+                building: {},
+                bupriority: 'P5',
+                floor: {},
+                room: 'n/a',
+                servicecode: '',
+                longkey: ' ',
+                serviceStatus: false,
+                priority: '',
+                nodekey: '',
+                nodetype: '',
+                effect: '',
+                department: '',
+                routing: ' ',
+                question: '',
+                shorttext: null,
+                longtext: null,
+                feedback: ' ',
+                notification: "0",
+                siteList: [],
+                buildingList: [],
+                floorList: []
+};   
+      }
         
      var oData = {
     "BuildingList": [

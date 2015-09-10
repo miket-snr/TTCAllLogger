@@ -13,7 +13,9 @@
       dataFactory.getsiteList() ;  
     };
     $scope.searchBox = '' ;
+    $scope.divs = ['Telkom','8ta','Cybernest'] ;
     $scope.characters = 5;
+        $scope.keepdata = '1';
     $scope.nodeData = dataFactory.nodeData ;
     $scope.treeData = dataFactory.treedata ;
     $scope.partners = {} ;
@@ -58,8 +60,9 @@
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
-  $scope.createcall = function( size) {
+  $scope.createcall = function( ) {
     var tempcode = $scope.screenModel.servicecode.split('-') ;
+      var size = 'Lg' ;
     $scope.screenModel.servicecode = tempcode[0] ;
      var result = $.grep($scope.nodeData, function(e){ return e.NodeKey == $scope.screenModel.servicecode; }); 
      $scope.screenModel.effect = result[0].Effect ;
@@ -84,9 +87,12 @@
     } ;
    var callsuccess = function(res) {
       var temp = res ; 
+       var that = $scope ;
        var outstr = 'Notification Created:' + temp.gQmnumr ;
        alert(outstr) ;
         $window.location.href = '#/';
+       if ($scope.keepdata.length < 2 ) {
+        dataFactory.resetScreen() ; }
    } ;
    AuthsFactory.postNotif(callsuccess, function (res) {
             $rootScope.error = res.error || 'Failed to get data';
