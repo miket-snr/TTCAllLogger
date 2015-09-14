@@ -43,9 +43,33 @@ h3 , h4 { font-weight: bold ;
 .panel-heading2 {
     padding: 10px 15px;
     font-weight: bold ;
-    text-decoration: underline;
+    font-size: 1.2em ;
     border-bottom: 1px solid transparent;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
 border-color: #dddddd ;
-background-color:lightblue;}
+background-color:lightgray;
+    color:darkblue ;
+}
+.navbar-inverse {
+    background-color:darkblue !important;
+    border-color: darkblue !important;
+}
+.Logo img {
+    height: 80px;
+    border: none;
+        float: left;
+    margin-top: -20px;
+    margin-left: 5%;
+}
+.blockcontainer
+{
+    margin:2%;
+    width:100%;
+    padding-left:5%;
+    padding-right:5%;
+    /* relative size and position on page  */
+    float: left;
+    position:relative;  /* coord system stop */
+    top: 0px; /* IE? */
+}

@@ -1,5 +1,5 @@
 ( function() {
-
+  "use strict";
     var locationcontroller = function($scope,$window, $filter ,$modal,dataFactory,$log , AuthsFactory ) {
     
     $scope.handle = '';
@@ -60,7 +60,8 @@
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
-  $scope.createcall = function( ) {
+  $scope.createcall = function() {
+    "use strict";  
     var tempcode = $scope.screenModel.servicecode.split('-') ;
       var size = 'Lg' ;
     $scope.screenModel.servicecode = tempcode[0] ;
