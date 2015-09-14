@@ -66,6 +66,7 @@
       var size = 'Lg' ;
     $scope.screenModel.servicecode = tempcode[0] ;
      var result = $.grep($scope.nodeData, function(e){ return e.NodeKey == $scope.screenModel.servicecode; }); 
+    alert('Call2');   
      $scope.screenModel.effect = result[0].Effect ;
      $scope.screenModel.routing  = result[0].Routing ;
      $scope.screenModel.department = result[0].Department ;
@@ -95,6 +96,7 @@
        if ($scope.keepdata.length < 2 ) {
         dataFactory.resetScreen() ; }
    } ;
+   alert('Call3'); 
    AuthsFactory.postNotif(callsuccess, function (res) {
             $rootScope.error = res.error || 'Failed to get data';
                     } , $scope.calllog) ;
