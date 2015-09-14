@@ -64,9 +64,16 @@
     var tempcode = $scope.screenModel.servicecode.split('-') ;
       var size = 'Lg' ;
     $scope.screenModel.servicecode = tempcode[0] ;
-     alert('Call');  
-     var result = $.grep($scope.nodeData, function(e){ return e.NodeKey == $scope.screenModel.servicecode; }); 
-    alert('Call2');   
+    var result = [];
+    var len=$scope.nodeData.length;
+    for (var i=0; i<len; i++) {
+      if ($scope.nodeData[i].NodeKey == $scope.screenModel.servicecode) {
+        result.push($scope.nodeData[i]);
+         break ;
+      }
+    };     
+    
+        // $.grep($scope.nodeData, function(e){ return e.NodeKey == $scope.screenModel.servicecode; }); 
      $scope.screenModel.effect = result[0].Effect ;
      $scope.screenModel.routing  = result[0].Routing ;
      $scope.screenModel.department = result[0].Department ;
@@ -96,7 +103,7 @@
        if ($scope.keepdata.length < 2 ) {
         dataFactory.resetScreen() ; }
    } ;
-   alert('Call3'); 
+
    AuthsFactory.postNotif(callsuccess, function (res) {
             $rootScope.error = res.error || 'Failed to get data';
                     } , $scope.calllog) ;
