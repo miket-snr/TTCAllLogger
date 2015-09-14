@@ -3,7 +3,7 @@
 
     angular.module('templateApp', ['treeControl','ui.bootstrap',
         'ngStorage',
-        'ngRoute',
+        'ngRoute', 'ngTouch',
         'angular-loading-bar'
        
     ]) 
