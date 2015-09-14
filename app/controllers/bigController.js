@@ -61,10 +61,10 @@
     });
   };
   $scope.createcall = function() {
-   alert('Call'); 
     var tempcode = $scope.screenModel.servicecode.split('-') ;
       var size = 'Lg' ;
     $scope.screenModel.servicecode = tempcode[0] ;
+     alert('Call');  
      var result = $.grep($scope.nodeData, function(e){ return e.NodeKey == $scope.screenModel.servicecode; }); 
     alert('Call2');   
      $scope.screenModel.effect = result[0].Effect ;
