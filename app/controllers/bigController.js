@@ -61,7 +61,7 @@
     });
   };
   $scope.createcall = function() {
-    "use strict";  
+   alert('Call'); 
     var tempcode = $scope.screenModel.servicecode.split('-') ;
       var size = 'Lg' ;
     $scope.screenModel.servicecode = tempcode[0] ;
